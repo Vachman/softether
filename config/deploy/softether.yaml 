@@ -1,0 +1,38 @@
+id: softetehr
+kind: Pod
+apiVersion: v1beta1
+desiredState: 
+ manifest: 
+  version: v1beta1
+  id: softether
+  containers: 
+  - name: softether
+    image: "va4man/softether"
+    ports:
+      - name: sstp
+        containerPort: 443
+        hostPort: 9200
+      - name: ssl
+        containerPort: 992
+        hostPort: 9292
+      - name: openvpn
+        containerPort: 1194
+        hostPort: 
+        protocol: UDP
+      - name: admin
+        containerPort: 5555
+        hostPort: 
+    env:
+      - name: GIT_URL
+        value: https://github.com/Vachman/softether.git
+    volumeMounts:
+      - name: softether-data
+        mountPath: /usr/local/vpnserver 
+  volumes:
+    - name: softether-data      
+labels: 
+ name: softether
+ environment: production
+ 
+ EXPOSE 443/tcp 992/tcp 1194/tcp 1194/udp 5555/tcp
+ 
