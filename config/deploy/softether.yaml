@@ -1,4 +1,4 @@
-id: softetehr
+id: softether
 kind: Pod
 apiVersion: v1beta1
 desiredState: 
@@ -11,17 +11,13 @@ desiredState:
     ports:
       - name: sstp
         containerPort: 443
-        hostPort: 9200
+        hostPort: 443
       - name: ssl
         containerPort: 992
-        hostPort: 9292
-      - name: openvpn
-        containerPort: 1194
-        hostPort: 
-        protocol: UDP
+        hostPort: 992
       - name: admin
         containerPort: 5555
-        hostPort: 
+        hostPort: 5555
     env:
       - name: GIT_URL
         value: https://github.com/Vachman/softether.git
@@ -33,6 +29,3 @@ desiredState:
 labels: 
  name: softether
  environment: production
- 
- EXPOSE 443/tcp 992/tcp 1194/tcp 1194/udp 5555/tcp
- 
